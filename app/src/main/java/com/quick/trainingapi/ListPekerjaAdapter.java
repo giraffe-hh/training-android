@@ -1,22 +1,27 @@
 package com.quick.trainingapi;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class ListPekerjaAdapter extends RecyclerView.Adapter<ListPekerjaAdapter.ViewHolder> {
 
+    Context mContext;
     private List<DataPekerja> dataPekerja; //inisialisasi List dengan object DataPekerja
 
 
     //construktor ListMahasiswaAdapter
-    public ListPekerjaAdapter(List<DataPekerja> dataPekerja) {
+    public ListPekerjaAdapter(Context mContext, List<DataPekerja> dataPekerja) {
+        this.mContext = mContext;
         this.dataPekerja = dataPekerja;
     }
 
@@ -30,9 +35,22 @@ public class ListPekerjaAdapter extends RecyclerView.Adapter<ListPekerjaAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DataPekerja data = dataPekerja.get(position); //inisialisasi object DataPekerja
+        final DataPekerja data = dataPekerja.get(position); //inisialisasi object DataPekerja
         holder.mNama.setText(data.getNama()); //menset value view "mNama" sesuai data dari getNama();
         holder.mAlamat.setText(data.getAlamat()); //menset value view "mAlamat" sesuai data dari getAlamat();
+        holder.cv_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, DetailActivity.class);
+                i.putExtra("id", data.getId());
+                i.putExtra("no_induk", data.getNo_induk());
+                i.putExtra("nama", data.getNama());
+                i.putExtra("jenis_kelamin",data.getJenis_kelamin());
+                i.putExtra("alamat",data.getAlamat());
+//                ((ReadActivity)mContext).startActivity(i);
+                ((ReadActivity)mContext).startActivityForResult(i, 32);
+            }
+        });
     }
 
     @Override
@@ -43,10 +61,12 @@ public class ListPekerjaAdapter extends RecyclerView.Adapter<ListPekerjaAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
+        CardView cv_item;
         TextView mNama, mJenisKelamin, mAlamat; //inisialisasi variabel
 
         public ViewHolder(View itemView) {
             super(itemView);
+            cv_item = itemView.findViewById(R.id.cv_item);
             mNama = itemView.findViewById(R.id.tv_nama);
             mAlamat = itemView.findViewById(R.id.tv_alamat);
         }

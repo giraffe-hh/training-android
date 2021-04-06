@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity"
+    tools:context=".DetailActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Data"
+            android:text="Detail Data"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textAppearance="?android:textAppearanceMedium"
@@ -117,14 +117,31 @@
                 android:hint="Alamat"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_marginTop="20dp"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_send"
-            android:text="Submit"
-            android:textAllCaps="false"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_send"
+                android:text="Update"
+                android:textAllCaps="false"/>
+            <Button
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btn_update"
+                android:id="@+id/btn_delete"
+                android:layout_marginTop="20dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_delete"
+                android:text="Delete"
+                android:textAllCaps="false"/>
+        </RelativeLayout>
+
     </LinearLayout>
 </LinearLayout>

@@ -7,7 +7,6 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="29" />
-
     <!-- menambahkan permission internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -21,6 +20,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.quick.trainingapi.DetailActivity" />
         <activity android:name="com.quick.trainingapi.AddActivity" />
         <activity android:name="com.quick.trainingapi.ReadActivity" />
         <activity android:name="com.quick.trainingapi.MainActivity" >

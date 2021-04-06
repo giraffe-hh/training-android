@@ -18,7 +18,6 @@ public class DataPekerja {
     }
 
     //getter dan setter
-
     public int getId() {
         return id;
     }

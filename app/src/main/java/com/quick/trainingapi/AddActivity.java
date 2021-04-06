@@ -33,6 +33,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        getSupportActionBar().hide();
 
         etInduk = findViewById(R.id.et_induk);
         etNama = findViewById(R.id.et_nama);
